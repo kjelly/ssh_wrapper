@@ -31,7 +31,7 @@ class MainMenu(Widget):
         self.screen.keypad(1)
         self.screen.border(0)
         self.top_line_num = 0
-        self.highlight_line_num = 1
+        self.highlight_line_num = 0
         self.markedLineNums = []
         self.line_list = line_list
         self.line_list_length = len(self.line_list)
