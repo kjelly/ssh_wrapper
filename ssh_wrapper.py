@@ -116,7 +116,7 @@ class RunClass(object):
 
 
 if __name__ == '__main__':
-    db = Database('host_list.txt')
+    db = Database('~/host_list.txt')
 
     if len(sys.argv) < 2:
         screen_wrapper = ScreenWrapper()
