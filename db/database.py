@@ -1,9 +1,14 @@
+import os
+import os.path
 from data_struct.item import Item
 
 
 class Database(object):
     def __init__(self, file_name):
+        file_name = os.path.expanduser(file_name)
         self.file_name = file_name
+        if not os.path.exists(file_name):
+            self.create_empty_file(file_name)
         with open(file_name, 'r') as ftr:
             outputLines = [x.strip() for x in ftr.readlines()]
         data = filter(filter_host_data, outputLines)
@@ -20,6 +25,10 @@ class Database(object):
     def add_item(self, item):
         if not item in self.item_list:
             self.item_list.append(item)
+
+    def create_empty_file(self, file_name):
+        with open(file_name, 'a'):
+            os.utime(file_name, None)
 
 
 def filter_host_data(line):
